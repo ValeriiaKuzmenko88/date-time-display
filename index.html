@@ -60,6 +60,44 @@
         updateClock();
         setInterval(updateClock, 1000);
       }
+
+
+    // запитати ім'я і вивести привітання
+    var name = prompt("Введіть ваше ім'я:");
+    if (name === null || name.trim() === "") {
+      alert("Ім'я не введено");
+    } else {
+      alert("Привіт, " + name.trim());
+    }
+
+    // запитати рік народження, вивести вік
+    const CURRENT_YEAR = 2025;
+    var birth = prompt("Введіть рік народження (наприклад, 1990):");
+    if (birth === null || birth.trim() === "") {
+      alert("Рік народження не введено");
+    } else {
+      var birthYear = Number(birth);
+      if (!Number.isFinite(birthYear) || birthYear <= 0 || birthYear > CURRENT_YEAR) {
+        alert("Будь ласка, введіть коректний рік (ціле число, не більше " + CURRENT_YEAR + ")");
+      } else {
+        var age = CURRENT_YEAR - birthYear;
+        alert("Ваш вік: " + age + " років");
+      }
+    }
+
+    // запитати довжину сторони квадрата і вивести периметр
+    var side = prompt("Введіть довжину сторони квадрата (число):");
+    if (side === null || side.trim() === "") {
+      alert("Довжина сторони не введена");
+    } else {
+      var sideNum = Number(side);
+      if (!Number.isFinite(sideNum) || sideNum < 0) {
+        alert("Введіть невід'ємне число для сторони квадрата");
+      } else {
+        var perimeter = 4 * sideNum;
+        alert("Периметр квадрата: " + perimeter);
+      }
+    }
     </script>
   </body>
 </html>
