@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дата й час</title>
+    <style>
+      body {
+        font-family: Inter, Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        background: #d5dbe3;
+        margin: 0;
+      }
+
+      #display {
+        width: 320px;
+        padding: 10px 14px;
+        font-size: 20px;
+        box-sizing: border-box;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body onload="startClock()">
+    <h2>Дата й час</h2>
+
+    <!-- Поле для виводу -->
+    <input type="text" id="display" size="25" readonly />
+
+    <script>
+      // Функція, яка додає провідний нуль, якщо число < 10
+      function pad(n) {
+        return n < 10 ? "0" + n : String(n);
+      }
+
+      // Функція, яка формує рядок у потрібному форматі
+      function makeString(now) {
+        var year = now.getFullYear();
+        var month = now.getMonth() + 1;
+        var day = now.getDate();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+
+        // Формат
+        return (year + "." + pad(month) + "." + pad(day) + " - " + hours + ":" + pad(minutes) + ":" + pad(seconds) );
+      }
+
+      function updateClock() {
+        var now = new Date();
+        var s = makeString(now);
+        document.getElementById("display").value = s;
+      }
+
+      function startClock() {
+        updateClock();
+        setInterval(updateClock, 1000);
+      }
+    </script>
+  </body>
+</html>
